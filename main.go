@@ -14,18 +14,12 @@ func main() {
 
 	r.Use(cors.New(cors.Config{
 		AllowOrigins:     []string{"*"},
-		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowMethods:     []string{"GET"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Content-Length", "Accept-Encoding", "Authorization"},
 		ExposeHeaders:    []string{"Content-Length"},
 		AllowCredentials: true,
 		MaxAge:           12 * 3600,
 	}))
-
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "pong",
-		})
-	})
 
 	r.GET("/uuid/:version", func(c *gin.Context) {
 		version := c.Param("version")
@@ -51,6 +45,9 @@ func generateUUID(version string) (string, error) {
 	var uuidString string
 
 	switch version {
+	case "0":
+		uuidInstance := uuid.Nil
+		uuidString = uuidInstance.String()
 	case "1":
 		uuidInstance, err := uuid.NewV1()
 		if err != nil {
