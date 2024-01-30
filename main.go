@@ -35,7 +35,7 @@ func main() {
 		})
 	})
 
-	err := r.Run()
+	err := r.Run(":80")
 	if err != nil {
 		log.Fatalf("failed to start server: %v", err)
 	}
