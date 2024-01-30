@@ -35,7 +35,7 @@ func main() {
 		})
 	})
 
-	err := r.RunTLS(":443", "certificate.crt", " privateKey.key")
+	err := r.Run()
 	if err != nil {
 		log.Fatalf("failed to start server: %v", err)
 	}
