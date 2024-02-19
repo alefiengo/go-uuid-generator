@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
+                echo 'BUILD EXECUTION STARTED'
                 sh 'go version'
             }
         }
