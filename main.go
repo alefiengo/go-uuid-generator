@@ -21,6 +21,12 @@ func main() {
 		MaxAge:           12 * 3600,
 	}))
 
+	r.GET("/", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"application": "UUID Generator",
+		})
+	})
+
 	r.GET("/uuid/:version", func(c *gin.Context) {
 		version := c.Param("version")
 		uuidString, err := generateUUID(version)
