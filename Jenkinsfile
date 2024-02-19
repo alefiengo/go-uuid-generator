@@ -1,10 +1,12 @@
 pipeline {
-    agent { docker { image 'golang:1.22.0-alpine3.19' } }
+    agent any
+    
     stages {
-        stage('build') {
+        stage('Build') {
             steps {
-                echo 'BUILD EXECUTION STARTED'
-                sh 'go version'
+                script {
+                    docker.build("go-uuid-generator:j1", "-f Dockerfile .")
+                }
             }
         }
     }
