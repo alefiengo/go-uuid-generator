@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    docker.build("go-uuid-generator:j1", "-f Dockerfile .")
+                    docker.build("alefiengo/go-uuid-generator:j1", "-f Dockerfile .")
                 }
             }
         }
@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry("https://registry-1.docker.io/v2/", "credencial-registry-docker") {
-                        docker.image("go-uuid-generator:j1").push()
+                        docker.image("alefiengo/go-uuid-generator:j1").push()
                     }
                 }
             }
