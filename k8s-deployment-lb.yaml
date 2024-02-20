@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: go-uuid-generator
-        image: alefiengo/go-uuid-generator:v1
+        image: alefiengo/go-uuid-generator:j1
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
 
